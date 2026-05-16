@@ -1,0 +1,80 @@
+name: Android Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build APK
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          cache-disabled: false
+
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Show toolchain versions
+        run: |
+          ./gradlew --version
+          java -version
+          echo "AGP: $(grep 'com.android.application' build.gradle.kts || true)"
+
+      - name: Build debug APK
+        run: ./gradlew :app:assembleDebug --stacktrace --warning-mode all
+
+      - name: Build release APK (unsigned)
+        run: ./gradlew :app:assembleRelease --stacktrace --warning-mode all
+
+      - name: Run lint
+        run: ./gradlew :app:lint --stacktrace --warning-mode all
+        continue-on-error: true
+
+      - name: List build outputs
+        run: |
+          echo "=== Debug ==="
+          ls -la app/build/outputs/apk/debug/ || true
+          echo "=== Release ==="
+          ls -la app/build/outputs/apk/release/ || true
+
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: autoagents-debug-apk
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+
+      - name: Upload release APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: autoagents-release-apk
+          path: app/build/outputs/apk/release/*.apk
+          if-no-files-found: error
+
+      - name: Upload lint report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lint-report
+          path: app/build/reports/lint-results-*.html
+          if-no-files-found: ignore

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AutoAgents</string>
+
+    <string name="tab_home">홈</string>
+    <string name="tab_chat">리서치</string>
+    <string name="tab_youtube">유튜브</string>
+    <string name="tab_memo">메모</string>
+    <string name="tab_insights">인사이트</string>
+    <string name="tab_settings">설정</string>
+
+    <string name="home_title">AI &amp; Tech Insight</string>
+    <string name="home_subtitle">최신 AI 및 테크 소식을 전해드립니다.</string>
+    <string name="home_refresh">새로고침</string>
+    <string name="home_empty">아직 수집된 기사가 없습니다. 새로고침을 눌러 RSS 피드를 불러오세요.</string>
+    <string name="home_loading">RSS 피드를 불러오는 중…</string>
+
+    <string name="chat_title">리서치 에이전트</string>
+    <string name="chat_hint">메시지를 입력하세요</string>
+    <string name="chat_send">보내기</string>
+    <string name="chat_clear">대화 초기화</string>
+    <string name="chat_greeting">안녕하세요! 무엇을 리서치할까요?</string>
+
+    <string name="youtube_title">유튜브 요약</string>
+    <string name="youtube_hint">유튜브 URL을 붙여넣으세요</string>
+    <string name="youtube_run">요약 생성</string>
+    <string name="youtube_processing">자막을 가져와 요약하는 중…</string>
+    <string name="youtube_empty">URL을 입력하면 요약 결과가 여기에 표시됩니다.</string>
+
+    <string name="memo_title">메모</string>
+    <string name="memo_new">새 메모</string>
+    <string name="memo_empty">메모가 없습니다. 우측 하단 + 버튼으로 새 메모를 만들어보세요.</string>
+    <string name="memo_save">저장</string>
+    <string name="memo_delete">삭제</string>
+    <string name="memo_title_hint">제목</string>
+    <string name="memo_content_hint">내용 (Markdown 지원)</string>
+    <string name="memo_tags_hint">태그 (쉼표로 구분)</string>
+
+    <string name="insights_title">데일리 인사이트</string>
+    <string name="insights_generate">오늘의 인사이트 생성</string>
+    <string name="insights_empty">아직 생성된 인사이트가 없습니다.</string>
+    <string name="insights_processing">관심 키워드로 인사이트를 생성하는 중…</string>
+
+    <string name="settings_title">설정</string>
+    <string name="settings_llm_section">LLM 설정</string>
+    <string name="settings_endpoint">엔드포인트</string>
+    <string name="settings_token">토큰</string>
+    <string name="settings_model">모델</string>
+    <string name="settings_yt_model">유튜브 모델</string>
+    <string name="settings_yt_api">유튜브 자막 API</string>
+    <string name="settings_keywords">관심 키워드</string>
+    <string name="settings_keywords_default">AI, Machine Learning, Mobile, Robotics, deep learning, Gemini, chatgpt, Claude, deepseek</string>
+    <string name="settings_save">저장</string>
+    <string name="settings_reset">기본값 복원</string>
+    <string name="settings_saved">설정이 저장되었습니다.</string>
+    <string name="settings_test_connection">연결 테스트</string>
+    <string name="settings_lang">언어</string>
+    <string name="settings_lang_ko">한국어</string>
+    <string name="settings_lang_en">English</string>
+
+    <string name="error_network">네트워크 오류가 발생했습니다.</string>
+    <string name="error_invalid_url">유효한 URL이 아닙니다.</string>
+    <string name="error_llm">LLM 호출에 실패했습니다.</string>
+</resources>
